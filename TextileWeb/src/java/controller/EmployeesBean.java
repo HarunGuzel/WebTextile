@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package controller;
 
 import dao.EmployeesDAO;
@@ -11,10 +7,7 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author yalci
- */
+
 @Named(value = "employeesBean")
 @SessionScoped
 public class EmployeesBean implements Serializable {
@@ -28,10 +21,19 @@ public class EmployeesBean implements Serializable {
 
     public void create() {
         this.getDao().createEmployees(entity);
+        this.entity = new Employees();
     }
     
     public void delete(Employees e){
         this.getDao().delete(e);
+    }
+    
+    public void update(){
+        this.getDao().update(this.entity);
+        this.entity = new Employees();
+    }
+    public void updateForm(Employees e){
+        this.entity = e;
     }
     
     public Employees getEntity() {

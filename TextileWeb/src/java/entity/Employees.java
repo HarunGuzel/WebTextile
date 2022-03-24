@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Employees implements Serializable{
 
     private Long emp_id;
-    //private Long workplace_id;
+    private Long workplace_id;
     private String first_name;
     private String last_name;
     private String phone;
@@ -14,9 +14,9 @@ public class Employees implements Serializable{
         
     }
 
-    public Employees(Long emp_id, String first_name, String last_name, String phone) {
+    public Employees(Long emp_id, String first_name, String last_name, String phone,Long workplace_id) {
         this.emp_id = emp_id;
-        //this.workplace_id = workplace_id;
+        this.workplace_id = workplace_id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.phone = phone;
@@ -35,7 +35,7 @@ public class Employees implements Serializable{
     public void setEmp_id(Long emp_id) {
         this.emp_id = emp_id;
     }
-/*
+
     public Long getWorkplace_id() {
         return workplace_id;
     }
@@ -43,7 +43,7 @@ public class Employees implements Serializable{
     public void setWorkplace_id(Long workplace_id) {
         this.workplace_id = workplace_id;
     }
-*/
+
     public String getFirst_name() {
         return first_name;
     }

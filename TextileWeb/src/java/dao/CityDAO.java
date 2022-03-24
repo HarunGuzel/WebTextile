@@ -2,8 +2,6 @@ package dao;
 
 import entity.City;
 import util.DBConnection;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -42,6 +40,16 @@ public class CityDAO extends DBConnection{
             System.out.println(ex.getMessage());
         }
     }
+    public void update(City entity) {
+        try {
+            Statement st = this.connect().createStatement();
+            String query2 = "update city set names='"+entity.getNames()+"' where id= "+entity.getId();
+            int r = st.executeUpdate(query2);
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     public List<City> getCityList() {
         
@@ -63,7 +71,4 @@ public class CityDAO extends DBConnection{
         }
         return cityList;
     }
-    
-   
-    
 }

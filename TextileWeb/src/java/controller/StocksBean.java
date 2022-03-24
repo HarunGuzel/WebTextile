@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package controller;
 
 import dao.StocksDAO;
@@ -11,10 +7,7 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author yalci
- */
+
 @Named(value = "stocksBean")
 @SessionScoped
 public class StocksBean implements Serializable {
@@ -23,18 +16,24 @@ public class StocksBean implements Serializable {
     private StocksDAO dao;
     private List<Stocks> list;
 
-    /**
-     * Creates a new instance of StocksBean
-     */
     public StocksBean() {
     }
     
     public void create() {
         this.getDao().createStocks(entity);
+        this.entity = new Stocks();
     }
     
     public void delete(Stocks s){
         this.getDao().delete(s);
+    }
+    
+    public void update(){
+        this.getDao().update(this.entity);
+        this.entity = new Stocks();
+    }
+    public void updateForm(Stocks s){
+        this.entity = s;
     }
     
     public Stocks getEntity() {

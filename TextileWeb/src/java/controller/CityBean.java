@@ -25,15 +25,23 @@ public class CityBean implements Serializable{
 
     public CityBean() {
     }
-
+    
     public void create() {
         this.getDao().createCity(entity);
+        this.entity = new City();
     }
     
     public void delete(City c){
         this.getDao().delete(c);
     }
-
+    
+    public void update(){
+        this.getDao().update(this.entity);
+        this.entity = new City();
+    }
+    public void updateForm(City c){
+        this.entity = c;
+    }
     public City getEntity() {
         if (this.entity == null) {
             this.entity = new City();
@@ -64,5 +72,6 @@ public class CityBean implements Serializable{
     public void setList(List<City> list) {
         this.list = list;
     }
+    
 
 }

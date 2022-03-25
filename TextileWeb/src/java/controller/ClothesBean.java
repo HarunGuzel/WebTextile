@@ -31,10 +31,18 @@ public class ClothesBean implements Serializable {
     
     public void create(){
         this.getDao().createClothes(entity);
+         this.entity = new Clothes();
     }
     
     public void delete(Clothes c){
         this.getDao().delete(c);
+    }
+    public void update(){
+        this.getDao().update(this.entity);
+        this.entity = new Clothes();
+    }
+    public void updateForm(Clothes c){
+        this.entity = c;
     }
     
     public Clothes getEntity() {

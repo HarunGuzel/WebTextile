@@ -45,25 +45,35 @@ public class ClothesDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
     }
+    public void update(Clothes entity) {
+        try {
+            Statement st = this.connect().createStatement();
+            String query2 = "update clothes set names='"+entity.getNames()+"' where id= "+entity.getId();
+            int r = st.executeUpdate(query2);
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
     
     public List<Clothes> getClothesList() {
         
-        List<Clothes> cityList = new ArrayList<>();
+        List<Clothes> clothesList = new ArrayList<>();
         
         try {
 
             Statement st = this.connect().createStatement();
 
-            String query2 = "select * from city";
+            String query2 = "select * from clothes";
             ResultSet rs = st.executeQuery(query2);
 
             
             while (rs.next()) {
-                cityList.add(new Clothes(rs.getLong("id"),rs.getString("names")));
+                clothesList.add(new Clothes(rs.getLong("cloth_id"),rs.getString("cloth_name")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return cityList;
+        return clothesList;
     }
 }

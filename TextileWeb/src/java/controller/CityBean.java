@@ -42,6 +42,7 @@ public class CityBean implements Serializable{
     public void updateForm(City c){
         this.entity = c;
     }
+    
     public City getEntity() {
         if (this.entity == null) {
             this.entity = new City();

@@ -41,5 +41,9 @@ public class Clothes implements Serializable{
     }
     
     //Overright şeysi eksik
+    @Override
+    public String toString() {
+        return "Clothes{" + "id=" + cloth_id + ", names=" + cloth_name + '}';
+    }
     
 }

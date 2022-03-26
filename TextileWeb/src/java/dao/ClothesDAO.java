@@ -17,13 +17,13 @@ import java.sql.ResultSet;
  */
 public class ClothesDAO extends DBConnection {
     
-    public void createClothes (Clothes c) {
+    public void createClothes (Clothes cl) {
         
         try {
             Statement st = this.connect().createStatement();
             
             System.out.println("-------test");
-            String query = "insert into clothes (names) values ('"+ c.getNames() + "')";
+            String query = "insert into clothes (cloth_name) values ('"+ cl.getCloth_name() + "')";
             
             System.out.println(query);
             int r = st.executeUpdate(query);
@@ -34,11 +34,11 @@ public class ClothesDAO extends DBConnection {
         }
     }
     
-    public void delete(Clothes c){
+    public void delete(Clothes cl){
         
         try {
             Statement st = this.connect().createStatement();
-            String query2 = "delete from clothes where id='"+c.getId()+"'";
+            String query2 = "delete from clothes where cloth_id='"+cl.getCloth_id()+"'";
             int r = st.executeUpdate(query2);
             
         } catch (Exception ex) {
@@ -48,7 +48,7 @@ public class ClothesDAO extends DBConnection {
     public void update(Clothes entity) {
         try {
             Statement st = this.connect().createStatement();
-            String query2 = "update clothes set names='"+entity.getNames()+"' where id= "+entity.getId();
+            String query2 = "update clothes set cloth_name='"+entity.getCloth_name()+"' where id= "+entity.getCloth_id();
             int r = st.executeUpdate(query2);
             
         } catch (Exception ex) {

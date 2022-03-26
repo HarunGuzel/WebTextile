@@ -9,7 +9,6 @@ import entity.Boutiques;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -33,7 +32,7 @@ public class BoutiquesBean implements Serializable {
         this.getDao().createBoutiques(entity);
     }
     
-    public void delete(Boutiques b) throws SQLException{
+    public void delete(Boutiques b){
         this.getDao().delete(b);
     }
     

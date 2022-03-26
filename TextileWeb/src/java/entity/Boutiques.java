@@ -63,6 +63,6 @@ public class Boutiques implements Serializable{
     
     @Override
     public String toString() {
-        return "Clothes{" + "id=" + bout_id + ", names=" + bout_name + "fatory_name" +factor_id + "city_id" +city_id+ '}';
+        return "Boutiques{" + "bout_id=" + bout_id + ", bout_name=" + bout_name +"city_id" +city_id+ "factor_id" +factor_id +  '}';
     }
 }

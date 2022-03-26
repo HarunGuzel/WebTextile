@@ -6,7 +6,6 @@ package dao;
 
 import entity.Boutiques;
 import java.sql.Statement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import util.DBConnection;
@@ -17,10 +16,10 @@ import java.sql.ResultSet;
  */
 public class BoutiquesDAO extends DBConnection{
 
-    public void delete(Boutiques b) throws SQLException {
+    public void delete(Boutiques b)  {
         try {
             java.sql.Statement st = this.connect().createStatement();
-            String query2 = "delete from boutiques where bot_id='"+b.getBout_id()+"'";
+            String query2 = "delete from boutiques where bout_id='"+b.getBout_id()+"'";
             int r = st.executeUpdate(query2);
         } catch (Exception ex){
             System.out.println(ex.getMessage());
@@ -33,7 +32,7 @@ public class BoutiquesDAO extends DBConnection{
             java.sql.Statement st =this.connect().createStatement();
             
             System.out.println("-------test");
-            String query = "insert into Boutiques (boutiqie_name,city_id,factory_id,) values ('"+ b.getBout_name()+"','" + b.getCity_id() + "''" + b.getFactor_id() + "')";
+            String query = "insert into boutiques (bout_name,city_id,factor_id,) values ('"+ b.getBout_name()+"','" + b.getCity_id() + "''" + b.getFactor_id() + "')";
             
             System.out.println(query);
             int r = st.executeUpdate(query);
@@ -48,7 +47,7 @@ public class BoutiquesDAO extends DBConnection{
         public void update(Boutiques entity) {
         try {
             Statement st = this.connect().createStatement();
-            String query2 = "update city set names='"+entity.getBout_name()+"' where id= "+entity.getBout_id() +"' city id= "+entity.getCity_id() +"' factory id= "+entity.getFactor_id();
+            String query2 = "update boutiques set bout_name='"+entity.getBout_name()+"' where bout_id= "+entity.getBout_id() +"' city_id= "+entity.getCity_id() +"' factor_id= "+entity.getFactor_id();
             int r = st.executeUpdate(query2);
             
         } catch (Exception ex) {
@@ -66,7 +65,7 @@ public class BoutiquesDAO extends DBConnection{
             ResultSet rs = st.executeQuery(query2);
             
             while (rs.next()) {
-                boutiquesList.add(new Boutiques(rs.getLong("bout_id"),rs.getLong("city_id"),rs.getLong("factor_id"),rs.getString("boutique_name")));
+                boutiquesList.add(new Boutiques(rs.getLong("bout_id"),rs.getLong("city_id"),rs.getLong("factor_id"),rs.getString("bout_name")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

@@ -18,32 +18,35 @@ public class Clothes implements Serializable{
     public Clothes() {
         
     }
-    
-    public Clothes(Long id,String names) {
-        this.cloth_id = id;
+  
+    public Clothes(Long cloth_id,String cloth_name) {
+        this.cloth_id = cloth_id;
+        this.cloth_name = cloth_name;
+    }
+    public Clothes(String names) {
         this.cloth_name = names;
     }
     
-    public Long getId(){
+    public Long getCloth_id(){
         return cloth_id;
     }
     
-    public void setId(Long id) {
-        this.cloth_id = id;
+    public void setCloth_id(Long cloth_id) {
+        this.cloth_id = cloth_id;
     }
     
-    public String getNames(){
+    public String getCloth_name(){
         return cloth_name;
     }
     
-    public void setNames(String names) {
-        this.cloth_name = names;
+    public void setCloth_name(String cloth_name) {
+        this.cloth_name = cloth_name;
     }
     
     //Overright şeysi eksik
     @Override
     public String toString() {
-        return "Clothes{" + "id=" + cloth_id + ", names=" + cloth_name + '}';
+        return "Clothes{" + "cloth_id=" + cloth_id + ", cloth_name=" + cloth_name + '}';
     }
     
 }

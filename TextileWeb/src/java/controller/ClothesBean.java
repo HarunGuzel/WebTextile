@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSF/JSFManagedBean.java to edit this template
- */
 package controller;
 
 import dao.ClothesDAO;
@@ -11,10 +7,7 @@ import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author yalci
- */
+
 @Named(value = "clothesBean")
 @SessionScoped
 public class ClothesBean implements Serializable {
@@ -23,9 +16,6 @@ public class ClothesBean implements Serializable {
     private ClothesDAO dao;
     private List<Clothes> list;
 
-    /**
-     * Creates a new instance of ClothesBean
-     */
     public ClothesBean() {
     }
     
@@ -34,15 +24,15 @@ public class ClothesBean implements Serializable {
          this.entity = new Clothes();
     }
     
-    public void delete(Clothes c){
-        this.getDao().delete(c);
+    public void delete(Clothes cl){
+        this.getDao().delete(cl);
     }
     public void update(){
         this.getDao().update(this.entity);
         this.entity = new Clothes();
     }
-    public void updateForm(Clothes c){
-        this.entity = c;
+    public void updateForm(Clothes cl){
+        this.entity = cl;
     }
     
     public Clothes getEntity() {

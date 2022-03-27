@@ -1,31 +1,27 @@
 package util;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class DBConnection {
 
-    Connection c;
+    public Connection connect() {
+        Connection c = null;
+        
+        try {
+            Class.forName("org.postgresql.Driver"); // lib kullanildi
 
-    public Connection connect() throws SQLException {
-
-        //too many clients already hatasi cozuldu 
-        if (c == null || c.isClosed()) {
-            try {
-                Class.forName("org.postgresql.Driver"); // lib kullanildi
-
-                //baglanti
-                c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/tms", "postgres", "134711");
-                Statement st = c.createStatement(); //baglanti degiskeni uzerinden ulasilir
-
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
-            }
-
+            //baglanti
+            c = DriverManager.getConnection("jdbc:postgresql://localhost:5432/tms", "postgres", "67848228");
+            Statement st = c.createStatement(); //baglanti degiskeni uzerinden ulasilir
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
+        
         return c;
-
     }
+
 }

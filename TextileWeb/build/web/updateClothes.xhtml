@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Update Clothes</title>
+        <title>Facelet Title</title>
         <h:outputStylesheet library="css" name="bootstrap.css" /> <!-- import ettik-->
 
         <style>
@@ -21,27 +21,27 @@
                     <h:inputHidden value="#{clothesBean.entity.cloth_id}" />
                     <h1 align="center">Clothes</h1>                   
                     <br/> <br/> <br/>
-                    Clothes Name <h:inputText class="form-control" value="#{clothesBean.entity.cloth_names}" />
+                    Clothes Name <h:inputText class="form-control" value="#{clothesBean.entity.cloth_name}" />
                 </div>
                 <br/>
 
                 <!-- butonu kaydirdik-->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <!-- duruma gore hangisi gelecek -->
-                    <h:commandButton class="btn btn-warning" action="#{clothesBean.update}" value="Update" />
+                    <h:commandButton class="btn btn-warning" action="#{clothesBean.update}" value="Güncelle" />
                 </div>
                 <!-- styleClass ile table ozelligi verdik-->
-                <h:dataTable styleClass="table table-striped"  value="#{clothesBean.list}" var="c" >
+                <h:dataTable styleClass="table table-striped"  value="#{clothesBean.list}" var="cl" >
 
                     <h:column>
-                        <f:facet name="header">Clothes_Id</f:facet>
-                            #{c.cloth_id}
+                        <f:facet name="header">ID</f:facet>
+                            #{cl.cloth_id}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Cloth_Name</f:facet>
                         <!-- isme tiklaninca guncelleme islemi baslayacak-->
                         <!-- tiklaninca id bilgisi gelsin diye link ozelligi atadik-->
-                        <h:commandLink action="#{clothesBean.updateForm(c)}" value="#{c.cloth_names}" />
+                        <h:commandLink action="#{clothesBean.updateForm(c)}" value="#{cl.cloth_name}" />
 
                     </h:column>
 
@@ -49,7 +49,7 @@
                 
                  <br/> <br/>
                 
-                <h:commandButton action="index" value="Back to Home Page"/>
+                <h:commandButton action="index" value="Ana Sayfaya Geri dön"/>
 
                 <hr />
             </h:form>

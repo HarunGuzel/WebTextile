@@ -17,31 +17,34 @@ import java.util.List;
  */
 @Named(value = "cityBean")
 @SessionScoped
-public class CityBean implements Serializable{
+public class CityBean implements Serializable {
 
     private City entity;
     private CityDAO dao;
     private List<City> list;
+    private List<City> monoList;
 
     public CityBean() {
     }
-    
+
     public void create() {
         this.getDao().createCity(entity);
         this.entity = new City();
     }
-    
-    public void delete(City c){
+
+    public void delete(City c) {
         this.getDao().delete(c);
     }
-    
-    public void update(){
+
+    public void update() {
         this.getDao().update(this.entity);
         this.entity = new City();
     }
-    public void updateForm(City c){
+
+    public void updateForm(City c) {
         this.entity = c;
     }
+
     public City getEntity() {
         if (this.entity == null) {
             this.entity = new City();
@@ -73,5 +76,12 @@ public class CityBean implements Serializable{
         this.list = list;
     }
     
-
+    public List<City> getMonoList() {
+        this.monoList = this.getDao().getCityMonoList(entity);
+        return monoList;
+    }
+    
+    public void setMonoList(){
+        this.monoList = monoList;
+    }
 }

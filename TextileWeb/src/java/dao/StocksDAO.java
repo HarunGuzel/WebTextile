@@ -60,7 +60,7 @@ public class StocksDAO extends DBConnection {
 
             Statement st = this.connect().createStatement();
 
-            String query2 = "select * from stocks";
+            String query2 = "select * from stocks order by stock_id asc";
             ResultSet rs = st.executeQuery(query2);
 
             while (rs.next()) {
@@ -71,5 +71,25 @@ public class StocksDAO extends DBConnection {
         }
         return stocksList;
     }
+    
+    public List<Stocks> getStocksMonoList(Stocks entity) {
 
+        List<Stocks> stocksMonoList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.connect().createStatement();
+            System.out.println("cagirmaya girdi");
+            String query2 = "select * from stocks where stock='" + entity.getStock()+ "'";
+            ResultSet rs = st.executeQuery(query2);
+            System.out.println("cagirmaya cikti");
+
+            while (rs.next()) {
+                stocksMonoList.add(new Stocks(rs.getLong("stock_id"), rs.getString("stock"),rs.getLong("cloth_id")));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return stocksMonoList;
+    }
 }

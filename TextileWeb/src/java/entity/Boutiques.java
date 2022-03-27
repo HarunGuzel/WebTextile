@@ -10,18 +10,18 @@ import java.io.Serializable;
 public class Boutiques implements Serializable{
     
     private Long bout_id;
-    //private Long city_id;
-    //private Long factor_id;
+    private Long city_id;
+    private Long factor_id;
     private String bout_name;
     
     public Boutiques(){
         
     }
     
-    public Boutiques(Long bout_id, String bout_name){
+    public Boutiques(Long bout_id,Long city_id,Long factor_id, String bout_name){
         this.bout_id = bout_id;
-        //this.city_id = city_id;
-        //this.factor_id = factor_id;
+        this.city_id = city_id;
+        this.factor_id = factor_id;
         this.bout_name = bout_name;        
     }
     
@@ -37,7 +37,6 @@ public class Boutiques implements Serializable{
         this.bout_id = bout_id;
     }
     
-    /*
     public Long getCity_id() {
         return city_id;
     }
@@ -53,12 +52,17 @@ public class Boutiques implements Serializable{
     public void setFactor_id(Long factor_id) {
         this.factor_id = factor_id;
     }
-*/
+
     public String getBout_name() {
         return bout_name;
     }
     
     public void setBout_name(String bout_name) {
         this.bout_name = bout_name;
+    }
+    
+    @Override
+    public String toString() {
+        return "Boutiques{" + "bout_id=" + bout_id + ", bout_name=" + bout_name +"city_id" +city_id+ "factor_id" +factor_id +  '}';
     }
 }

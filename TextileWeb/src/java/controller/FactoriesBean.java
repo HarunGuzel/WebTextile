@@ -18,6 +18,7 @@ public class FactoriesBean implements Serializable {
     private Factories entity;
     private FactoriesDAO dao;
     private List<Factories> list;
+    private List<Factories> monoList;
 
     public FactoriesBean() {
     }
@@ -71,4 +72,12 @@ public class FactoriesBean implements Serializable {
         this.list = list;
     }
 
+    public List<Factories> getMonoList() {
+        this.monoList = this.getDao().getFactoriesMonoList(entity);
+        return monoList;
+    }
+    
+    public void setMonoList(){
+        this.monoList = monoList;
+    }
 }

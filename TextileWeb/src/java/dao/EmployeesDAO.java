@@ -60,7 +60,7 @@ public class EmployeesDAO extends DBConnection {
 
             Statement st = this.connect().createStatement();
 
-            String query2 = "select * from employees";
+            String query2 = "select * from employees order by emp_id asc";
             ResultSet rs = st.executeQuery(query2);
 
             while (rs.next()) {
@@ -70,6 +70,27 @@ public class EmployeesDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
         return employeesList;
+    }
+    
+    public List<Employees> getEmployeesMonoList(Employees entity) {
+
+        List<Employees> employeesMonoList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.connect().createStatement();
+            System.out.println("cagirmaya girdi");
+            String query2 = "select * from employees where first_name='" + entity.getFirst_name()+ "'";
+            ResultSet rs = st.executeQuery(query2);
+            System.out.println("cagirmaya cikti");
+
+            while (rs.next()) {
+                employeesMonoList.add(new Employees(rs.getLong("emp_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("phone"), rs.getLong("workplace_id")));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return employeesMonoList;
     }
 
 }

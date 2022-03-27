@@ -15,6 +15,7 @@ public class EmployeesBean implements Serializable {
     private Employees entity;
     private EmployeesDAO dao;
     private List<Employees> list;
+    private List<Employees> monoList;
     
     public EmployeesBean() {
     }
@@ -67,6 +68,14 @@ public class EmployeesBean implements Serializable {
         this.list = list;
     }
     
+    public List<Employees> getMonoList() {
+        this.monoList = this.getDao().getEmployeesMonoList(entity);
+        return monoList;
+    }
+    
+    public void setMonoList(){
+        this.monoList = monoList;
+    }
     
     
 }

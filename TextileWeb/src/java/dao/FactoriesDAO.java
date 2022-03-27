@@ -64,7 +64,7 @@ public class FactoriesDAO extends DBConnection{
             
             Statement st = (Statement) this.connect().createStatement();
             
-            String query2 = "select * from factories";
+            String query2 = "select * from factories order by factory_id asc";
             ResultSet rs = st.executeQuery(query2);
             
             while (rs.next()) {
@@ -76,7 +76,26 @@ public class FactoriesDAO extends DBConnection{
         return factoriesList;
     }
 
-    
+    public List<Factories> getFactoriesMonoList(Factories entity) {
+
+        List<Factories> factoriesMonoList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.connect().createStatement();
+            System.out.println("cagirmaya girdi");
+            String query2 = "select * from factories where factory_name='" + entity.getFactory_name()+ "'";
+            ResultSet rs = st.executeQuery(query2);
+            System.out.println("cagirmaya cikti");
+
+            while (rs.next()) {
+                factoriesMonoList.add(new Factories(rs.getLong("factory_id"),rs.getString("factory_name"),rs.getLong("city_id")));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return factoriesMonoList;
+    }
 
     
 }

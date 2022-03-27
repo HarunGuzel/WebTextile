@@ -4,7 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Textile Web</title>
+        <title>Read Stocks</title>
         <h:outputStylesheet library="css" name="bootstrap.css" /> <!-- import ettik-->
 
         <style>
@@ -40,6 +40,50 @@
                  <br/> <br/>
                 
                 <h:commandButton action="index" value="Ana Sayfaya Geri dön"/>
+            </h:form>
+        </div>
+        
+        <div class="container"> <!-- ekrana ortaladik-->
+            <h:form>
+                <div>
+                    <h:inputHidden value="#{stocksBean.entity.stock_id}" />
+                    
+                    <br/> <br/> <br/>
+                    Stocks  <h:inputText class="form-control" value="#{stocksBean.entity.stock}" />
+
+                </div>
+
+                <br/>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <h:commandButton class="btn btn-warning" action="#{stocksBean.getMonoList}" value="Singular Reading" />
+                </div>
+                <!-- styleClass ile table ozelligi verdik-->
+                <h:dataTable styleClass="table table-striped" value="#{stocksBean.monoList}" var="s" >
+
+                    <h:column>
+                        <f:facet name="header">Stock_Id</f:facet>
+                            #{s.stock_id}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Cloth_Id</f:facet>
+                            #{s.cloth_id}
+
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Stock</f:facet>
+                            #{s.stock}
+                    </h:column>
+
+
+
+                </h:dataTable>
+                <br/> <br/><br /><br />
+                <hr />
+
+                <h:commandButton action="index" value="Back to Home Page"/>
+
+                <hr />
             </h:form>
         </div>
 

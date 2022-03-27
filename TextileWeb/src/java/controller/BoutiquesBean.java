@@ -9,7 +9,6 @@ import entity.Boutiques;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -23,6 +22,7 @@ public class BoutiquesBean implements Serializable {
     private Boutiques entity;
     private BoutiquesDAO dao;
     private List<Boutiques> list;
+    private List<Boutiques> monoList;
     /**
      * Creates a new instance of BoutiquesBean
      */
@@ -31,10 +31,18 @@ public class BoutiquesBean implements Serializable {
     
     public void create() {
         this.getDao().createBoutiques(entity);
+        this.entity = new Boutiques();
     }
     
-    public void delete(Boutiques b) throws SQLException{
+    public void delete(Boutiques b){
         this.getDao().delete(b);
+    }
+    public void update(){
+        this.getDao().update(this.entity);
+        this.entity = new Boutiques();
+    }
+    public void updateForm(Boutiques b){
+        this.entity = b;
     }
     
     public Boutiques getEntity() {
@@ -66,5 +74,12 @@ public class BoutiquesBean implements Serializable {
     
     public void setList(List<Boutiques> list) {
         this.list = list;
+    }
+    public List<Boutiques> getMonoList() {
+        this.monoList = this.getDao().getBoutiquesMonoList(entity);
+        return monoList;
+    }
+    public void setMonoList(){
+        this.monoList = monoList;
     }
 }

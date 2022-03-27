@@ -59,7 +59,7 @@ public class CityDAO extends DBConnection{
 
             Statement st = this.connect().createStatement();
 
-            String query2 = "select * from city";
+            String query2 = "select * from city order by id asc";
             ResultSet rs = st.executeQuery(query2);
 
             
@@ -70,5 +70,25 @@ public class CityDAO extends DBConnection{
             System.out.println(ex.getMessage());
         }
         return cityList;
+    }
+    
+    public List<City> getCityMonoList(City entity) {
+
+        List<City> cityMonoList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.connect().createStatement();
+
+            String query2 = "select * from city where names='" + entity.getNames()+ "'";
+            ResultSet rs = st.executeQuery(query2);
+
+            while (rs.next()) {
+                cityMonoList.add(new City(rs.getLong("id"),rs.getString("names")));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return cityMonoList;
     }
 }

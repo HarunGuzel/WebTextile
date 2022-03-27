@@ -15,7 +15,9 @@ public class StocksBean implements Serializable {
     private Stocks entity;
     private StocksDAO dao;
     private List<Stocks> list;
-
+    private List<Stocks> monoList;
+    
+    
     public StocksBean() {
     }
     
@@ -65,5 +67,14 @@ public class StocksBean implements Serializable {
     
     public void setList(List<Stocks> list) {
         this.list = list;
+    }
+    
+    public List<Stocks> getMonoList() {
+        this.monoList = this.getDao().getStocksMonoList(entity);
+        return monoList;
+    }
+    
+    public void setMonoList(){
+        this.monoList = monoList;
     }
 }

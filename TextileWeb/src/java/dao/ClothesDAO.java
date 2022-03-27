@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import entity.Clothes;
@@ -16,54 +12,85 @@ import java.sql.ResultSet;
  * @author yalci
  */
 public class ClothesDAO extends DBConnection {
-    
-    public void createClothes (Clothes c) {
-        
+
+    public void createClothes(Clothes cl) {
+
         try {
             Statement st = this.connect().createStatement();
-            
+
             System.out.println("-------test");
-            String query = "insert into clothes (names) values ('"+ c.getNames() + "')";
-            
+            String query = "insert into clothes (cloth_names) values ('"+ cl.getCloth_names()+ "')";
+
             System.out.println(query);
             int r = st.executeUpdate(query);
-            
+
             System.out.println("-------test");
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public void delete(Clothes c){
+
+    public void delete(Clothes cl){
         
         try {
             Statement st = this.connect().createStatement();
-            String query2 = "delete from clothes where id='"+c.getId()+"'";
+            String query2 = "delete from clothes where cloth_id='"+cl.getCloth_id()+"'";
             int r = st.executeUpdate(query2);
             
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
+
+    public void update(Clothes entity) {
+        try {
+            Statement st = this.connect().createStatement();
+            String query2 = "update clothes set cloth_names='"+entity.getCloth_names()+"' where cloth_id= "+entity.getCloth_id();
+            int r = st.executeUpdate(query2);
+            
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public List<Clothes> getClothesList() {
         
-        List<Clothes> cityList = new ArrayList<>();
+        List<Clothes> clothesList = new ArrayList<>();
         
         try {
 
             Statement st = this.connect().createStatement();
 
-            String query2 = "select * from city";
+            String query2 = "select * from clothes order by cloth_id asc";
             ResultSet rs = st.executeQuery(query2);
 
             
             while (rs.next()) {
-                cityList.add(new Clothes(rs.getLong("id"),rs.getString("names")));
+                clothesList.add(new Clothes(rs.getLong("cloth_id"),rs.getString("cloth_names")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        return cityList;
+        return clothesList;
+    }
+    
+    public List<Clothes> getClothesMonoList(Clothes entity) {
+
+        List<Clothes> clothesMonoList = new ArrayList<>();
+
+        try {
+
+            Statement st = this.connect().createStatement();
+
+            String query2 = "select * from clothes where cloth_names='" + entity.getCloth_names()+ "'";
+            ResultSet rs = st.executeQuery(query2);
+
+            while (rs.next()) {
+                clothesMonoList.add(new Clothes(rs.getLong("cloth_id"),rs.getString("cloth_names")));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return clothesMonoList;
     }
 }

@@ -12,20 +12,9 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/deleteEmployees.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/updateEmployees.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/index.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/updateBoutiques.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/controller/EmployeesBean.java</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/entity/Boutiques.java</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/deleteBoutiques.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/createBoutiques.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/readBoutiques.xhtml</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/dao/EmployeesDAO.java</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/dao/BoutiquesDAO.java</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/controller/BoutiquesBean.java</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/entity/Employees.java</file>
-            <file>file:/C:/Users/ibo_7/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/createEmployees.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/webSon/WebTextile-main/TextileWeb/web/createClothes.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/webSon/WebTextile-main/TextileWeb/web/readCity.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/webSon/WebTextile-main/TextileWeb/web/readEmployees.xhtml</file>
         </group>
     </open-files>
 </project-private>

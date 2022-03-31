@@ -8,34 +8,34 @@ import java.io.Serializable;
  */
 public class Factories implements Serializable{
     
-    private Long factory_id;
-    private Long city_id;
+    private int factory_id;
+    private City city;
     private String factory_name;
     
     public Factories() {
         
     }
-  
-    public Factories(Long city_id, String factory_name,Long factory_id){
-        this.city_id = city_id;
-        this.factory_name = factory_name;
+
+    public Factories(int factory_id, City city, String factory_name) {
         this.factory_id = factory_id;
+        this.city = city;
+        this.factory_name = factory_name;
     }
 
-    public Long getFactory_id() {
+    public int getFactory_id() {
         return factory_id;
     }
 
-    public void setFactory_id(Long factory_id) {
+    public void setFactory_id(int factory_id) {
         this.factory_id = factory_id;
     }
 
-    public Long getCity_id() {
-        return city_id;
+    public City getCity() {
+        return city;
     }
 
-    public void setCity_id(Long city_id) {
-        this.city_id = city_id;
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public String getFactory_name() {

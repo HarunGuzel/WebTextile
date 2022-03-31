@@ -9,10 +9,9 @@ public abstract class DBConnection {
 
     Connection c;
 
-    public Connection connect() throws SQLException {
+    public Connection connect() {
 
-        //too many clients already hatasi cozuldu 
-        if (c == null || c.isClosed()) {
+        if (this.c == null) {
             try {
                 Class.forName("org.postgresql.Driver"); // lib kullanildi
 
@@ -23,9 +22,7 @@ public abstract class DBConnection {
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-
         }
         return c;
-
     }
 }

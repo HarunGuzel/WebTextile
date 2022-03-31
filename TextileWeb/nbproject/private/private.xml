@@ -12,9 +12,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/webSon/WebTextile-main/TextileWeb/web/createClothes.xhtml</file>
-            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/webSon/WebTextile-main/TextileWeb/web/readCity.xhtml</file>
-            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/webSon/WebTextile-main/TextileWeb/web/readEmployees.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/Dersler/kenan/projeSonHali/WebTextile/TextileWeb/web/createFactories.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/Dersler/kenan/projeSonHali/WebTextile/TextileWeb/web/readFactories.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/Dersler/kenan/projeSonHali/WebTextile/TextileWeb/src/java/controller/CityBean.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/Dersler/kenan/projeSonHali/WebTextile/TextileWeb/src/java/util/DBConnection.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/Dersler/kenan/projeSonHali/WebTextile/TextileWeb/src/java/dao/FactoriesDAO.java</file>
         </group>
     </open-files>
 </project-private>

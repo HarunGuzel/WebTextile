@@ -1,5 +1,6 @@
 package dao;
 
+import entity.City;
 import entity.Factories;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
  */
 public class FactoriesDAO extends DBConnection{
     
+    private CityDAO cityDao;
     
     public void createFactories(Factories f) {
         
@@ -21,7 +23,7 @@ public class FactoriesDAO extends DBConnection{
             Statement st = this.connect().createStatement();
             
             System.out.println("-------test");
-            String query = "insert into factories (factory_name,city_id) values ('" + f.getFactory_name()+ "','" + f.getCity_id()+ "')";
+            String query = "insert into factories (factory_name,city_id) values ('" + f.getFactory_name()+ "','" + f.getCity().getId()+ "')";
             
             System.out.println(query);
             int r = st.executeUpdate(query);
@@ -48,7 +50,7 @@ public class FactoriesDAO extends DBConnection{
         try {
             Statement st = this.connect().createStatement();
             System.out.println("update girdi");
-            String query2 = "update factories set factory_name='" + entity.getFactory_name()+ "' , city_id='" + entity.getCity_id()+ "' where factory_id= " + entity.getFactory_id();
+            String query2 = "update factories set factory_name='" + entity.getFactory_name()+ "' , city_id='" + entity.getCity().getId()+ "' where factory_id= " + entity.getFactory_id();
             int r = st.executeUpdate(query2);
             System.out.println("update cikti");
 
@@ -68,7 +70,8 @@ public class FactoriesDAO extends DBConnection{
             ResultSet rs = st.executeQuery(query2);
             
             while (rs.next()) {
-                factoriesList.add(new Factories(rs.getLong("factory_id"),rs.getString("factory_name"),rs.getLong("city_id")));
+                City c = this.getCityDao().findByID(rs.getInt("city_id"));
+                factoriesList.add(new Factories(rs.getInt("factory_id"),c,rs.getString("factory_name")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -89,7 +92,8 @@ public class FactoriesDAO extends DBConnection{
             System.out.println("cagirmaya cikti");
 
             while (rs.next()) {
-                factoriesMonoList.add(new Factories(rs.getLong("factory_id"),rs.getString("factory_name"),rs.getLong("city_id")));
+                City c = this.getCityDao().findByID(rs.getInt("city_id"));
+                factoriesMonoList.add(new Factories(rs.getInt("factory_id"),c,rs.getString("factory_name")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -97,5 +101,18 @@ public class FactoriesDAO extends DBConnection{
         return factoriesMonoList;
     }
 
+    public CityDAO getCityDao() {
+        if(cityDao == null){
+            this.cityDao = new CityDAO();
+        }
+        return cityDao;
+    }
+
+    public void setCityDao(CityDAO cityDao) {
+        this.cityDao = cityDao;
+    }
+
+    
+    
     
 }

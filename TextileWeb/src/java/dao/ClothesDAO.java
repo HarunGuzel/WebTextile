@@ -55,7 +55,7 @@ public class ClothesDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             String query2 = "delete from clothes where id='"+cl.getId()+"'";
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
             
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

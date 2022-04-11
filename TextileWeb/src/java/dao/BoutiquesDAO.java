@@ -66,8 +66,8 @@ public class BoutiquesDAO extends DBConnection {
     public void delete(Boutiques b) {
         try {
             java.sql.Statement st = this.connect().createStatement();
-            String query2 = "delete from boutiques where bout_id='" + b.getBout_id() + "'";
-            int r = st.executeUpdate(query2);
+            String query2 = "delete from boutiques where bout_id=" + b.getBout_id();
+            st.executeUpdate(query2);
             st.executeUpdate("delete from boutiques_clothes where boutiques_id="+b.getBout_id());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

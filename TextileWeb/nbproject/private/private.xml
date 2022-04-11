@@ -12,9 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/dao/StocksDAO.java</file>
-            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/WebTextile-main/TextileWeb/src/java/entity/Stocks.java</file>
-            <file>file:/C:/Users/yalci/OneDrive/Masaüstü/WebTextile-main/TextileWeb/web/readStocks.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/entity/Clothes.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/controller/EmployeesBean.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/web/deleteCity.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/dao/BoutiquesDAO.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/dao/ClothesDAO.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/controller/CityBean.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/web/deleteStocks.xhtml</file>
         </group>
     </open-files>
 </project-private>

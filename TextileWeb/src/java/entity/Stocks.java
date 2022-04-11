@@ -13,7 +13,7 @@ public class Stocks implements Serializable{
         
     }
     
-    public Stocks(Long stock_id, String stock,Long cloth_id) {
+    public Stocks(Long stock_id,Long cloth_id, String stock) {
         this.stock_id = stock_id;
         this.cloth_id = cloth_id;
         this.stock = stock;

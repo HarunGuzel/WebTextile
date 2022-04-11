@@ -64,7 +64,7 @@ public class StocksDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query2);
 
             while (rs.next()) {
-                stocksList.add(new Stocks(rs.getLong("stock_id"), rs.getString("stock"),rs.getLong("cloth_id")));
+                stocksList.add(new Stocks(rs.getLong("stock_id"), rs.getLong("cloth_id"),rs.getString("stock")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -85,7 +85,7 @@ public class StocksDAO extends DBConnection {
             System.out.println("cagirmaya cikti");
 
             while (rs.next()) {
-                stocksMonoList.add(new Stocks(rs.getLong("stock_id"), rs.getString("stock"),rs.getLong("cloth_id")));
+                stocksMonoList.add(new Stocks(rs.getLong("stock_id"), rs.getLong("cloth_id"),rs.getString("stock")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

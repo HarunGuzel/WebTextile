@@ -6,32 +6,26 @@ import java.io.Serializable;
  *
  * @author yalci
  */
-public class Clothes implements Serializable{
-    
-    private Long cloth_id;
+public class Clothes implements Serializable {
+
+    private int id;
     private String cloth_names;
-    
-    public Clothes(){
-        
-    }
-    
 
-    public Clothes(String cloth_names) {
-        this.cloth_id = cloth_id;
+    public Clothes() {
+
+    }
+
+    public Clothes(int id, String cloth_names) {
+        this.id = id;
         this.cloth_names = cloth_names;
     }
 
-    public Clothes(Long cloth_id, String cloth_names) {
-        this.cloth_id = cloth_id;
-        this.cloth_names = cloth_names;
+    public int getId() {
+        return id;
     }
 
-    public Long getCloth_id() {
-        return cloth_id;
-    }
-
-    public void setCloth_id(Long cloth_id) {
-        this.cloth_id = cloth_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCloth_names() {
@@ -43,9 +37,32 @@ public class Clothes implements Serializable{
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Clothes other = (Clothes) obj;
+        return this.id == other.id;
+    }
+
+    @Override
     public String toString() {
-        return "Clothes{" + "cloth_id=" + cloth_id + ", cloth_names=" + cloth_names + '}';
+        return cloth_names;
     }
     
     
+
 }

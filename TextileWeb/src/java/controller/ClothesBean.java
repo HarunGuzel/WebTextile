@@ -24,7 +24,12 @@ public class ClothesBean implements Serializable {
         this.getDao().createClothes(entity);
         this.entity = new Clothes();
     }
-
+    public String getTitle(int id){
+        //burada veritabani islemi var,onun icin islem;
+        Clothes c = this.getDao().findByID(id);
+        return c.getCloth_names();
+    }
+    
     public void delete(Clothes cl) {
         this.getDao().delete(cl);
     }

@@ -5,6 +5,7 @@
 package dao;
 
 import entity.Boutiques;
+import entity.Clothes;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,8 @@ import java.sql.ResultSet;
  * @author yalci
  */
 public class BoutiquesDAO extends DBConnection {
+    
+    private ClothesDAO clothesDao;
 
     public void createBoutiques(Boutiques b) {
         try {
@@ -23,10 +26,16 @@ public class BoutiquesDAO extends DBConnection {
             java.sql.Statement st = this.connect().createStatement();
 
             System.out.println("-------create girdi");
-            String query = "insert into boutiques (bout_name,city_id,factor_id) values ('" + b.getBout_name() + "','" + b.getCity_id() + "','" + b.getFactor_id() + "')";
-
-            System.out.println(query);
+            String query = "insert into boutiques (bout_name) values ('" + b.getBout_name() + "')";
             int r = st.executeUpdate(query);
+            ResultSet rs = st.executeQuery("select max(bout_id) as mid from boutiques");
+            rs.next();
+            
+            int boutiques_id = rs.getInt("mid");
+            for(Clothes cat : b.getClothies()){
+                query = "insert into boutiques_clothes (boutiques_id,clothes_id) values (" + boutiques_id + "," + cat.getId()+ ")";
+                st.executeUpdate(query);
+            }
 
             System.out.println("------create cikti");
 
@@ -39,10 +48,16 @@ public class BoutiquesDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             System.out.println("update girdi");
-            String query2 = "update boutiques set bout_name='" + entity.getBout_name() + "' , city_id='" + entity.getCity_id() + "' , factor_id='" + entity.getFactor_id() + "' where bout_id= " + entity.getBout_id() ;
+            String query2 = "update boutiques set bout_name='" + entity.getBout_name() + "' where bout_id= " + entity.getBout_id() ;
             System.out.println("update cikti");
             int r = st.executeUpdate(query2);
-
+            st.executeUpdate("delete from boutiques_clothes where boutiques_id="+entity.getBout_id());
+            
+            
+            for(Clothes cat : entity.getClothies()){
+                query2 = "insert into boutiques_clothes (boutiques_id,clothes_id) values (" + entity.getBout_id() + "," + cat.getId()+ ")";
+                st.executeUpdate(query2);
+            }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -53,6 +68,7 @@ public class BoutiquesDAO extends DBConnection {
             java.sql.Statement st = this.connect().createStatement();
             String query2 = "delete from boutiques where bout_id='" + b.getBout_id() + "'";
             int r = st.executeUpdate(query2);
+            st.executeUpdate("delete from boutiques_clothes where boutiques_id="+b.getBout_id());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -68,12 +84,34 @@ public class BoutiquesDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query2);
 
             while (rs.next()) {
-                boutiquesList.add(new Boutiques(rs.getLong("bout_id"), rs.getLong("city_id"), rs.getLong("factor_id"), rs.getString("bout_name")));
+                boutiquesList.add(new Boutiques(rs.getInt("bout_id"),this.getBoutiquesClothies(rs.getInt("bout_id")),rs.getString("bout_name")));
+                
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return boutiquesList;
+    }
+    
+    public List<Clothes> getBoutiquesClothies(int boutiques_id) {
+        List<Clothes> list = new ArrayList<>();
+
+        try {
+            Statement st = this.connect().createStatement();
+
+            String query = "select * from clothes where id in (select clothes_id from boutiques_clothes where boutiques_id="+boutiques_id+")";
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                list.add(new Clothes(rs.getInt("id"),rs.getString("cloth_names")));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+
     }
     
     public List<Boutiques> getBoutiquesMonoList(Boutiques entity) {
@@ -88,12 +126,25 @@ public class BoutiquesDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query2);
 
             while (rs.next()) {
-                boutiquesMonoList.add(new Boutiques(rs.getLong("bout_id"), rs.getLong("city_id"), rs.getLong("factor_id"), rs.getString("bout_name")));
+                boutiquesMonoList.add(new Boutiques(rs.getInt("bout_id"),this.getBoutiquesClothies(rs.getInt("bout_id")),rs.getString("bout_name")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return boutiquesMonoList;
     }
+
+    public ClothesDAO getClothesDao() {
+        if(clothesDao == null){
+            this.clothesDao = new ClothesDAO();
+        }
+        return clothesDao;
+    }
+
+    public void setClothesDao(ClothesDAO clothesDao) {
+        this.clothesDao = clothesDao;
+    }
+    
+    
 
 }

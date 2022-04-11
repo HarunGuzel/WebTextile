@@ -19,11 +19,13 @@
                 <div>
                     <!-- tiklaninca id bilgisi alindi-->
                     <h:inputHidden value="#{boutiquesBean.entity.bout_id}" />
-                    <h1 align="center">Boutiques</h1>                   
+                    <h1 align="center">Boutiques</h1>   
+                    Clothes :
+                    <h:selectManyMenu value="#{boutiquesBean.entity.clothies}" converter="clothesConverter" style="height:100px;width:100px;">
+                        <f:selectItems value="#{clothesBean.list}" var="c" itemValue="#{c}" itemLabel="#{c.cloth_names}" />
+                    </h:selectManyMenu>
                     <br/> <br/> <br/>
                     Boutiques Name <h:inputText class="form-control" value="#{boutiquesBean.entity.bout_name}" />
-                    City_Id  <h:inputText class="form-control" value="#{boutiquesBean.entity.city_id}" />
-                    Factory_Id  <h:inputText class="form-control" value="#{boutiquesBean.entity.factor_id}" />
                 </div>
                 <br/>
 
@@ -47,13 +49,10 @@
 
                     </h:column>
                     <h:column>
-                        <f:facet name="header">City_Id</f:facet>
-                            #{b.city_id}
+                        <f:facet name="header">Clothies</f:facet>
+                            #{b.clothies}
                     </h:column>
-                    <h:column>
-                        <f:facet name="header">Factory_Id</f:facet>
-                            #{b.factor_id}
-                    </h:column>
+                    
 
                 </h:dataTable>
                 

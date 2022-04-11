@@ -12,7 +12,27 @@ import java.sql.ResultSet;
  * @author yalci
  */
 public class ClothesDAO extends DBConnection {
+    
+    public Clothes findByID(int id) {
+        Clothes c = null;
+        try {
+            Statement st = this.connect().createStatement();
 
+            String query = "select * from clothes where id=" + id;
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                c = (new Clothes(rs.getInt("id"),rs.getString("cloth_names")));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return c;
+    }
+    
     public void createClothes(Clothes cl) {
 
         try {
@@ -34,7 +54,7 @@ public class ClothesDAO extends DBConnection {
         
         try {
             Statement st = this.connect().createStatement();
-            String query2 = "delete from clothes where cloth_id='"+cl.getCloth_id()+"'";
+            String query2 = "delete from clothes where id='"+cl.getId()+"'";
             int r = st.executeUpdate(query2);
             
         } catch (Exception ex) {
@@ -45,7 +65,7 @@ public class ClothesDAO extends DBConnection {
     public void update(Clothes entity) {
         try {
             Statement st = this.connect().createStatement();
-            String query2 = "update clothes set cloth_names='"+entity.getCloth_names()+"' where cloth_id= "+entity.getCloth_id();
+            String query2 = "update clothes set cloth_names='"+entity.getCloth_names()+"' where id= "+entity.getId();
             int r = st.executeUpdate(query2);
             
         } catch (Exception ex) {
@@ -61,12 +81,12 @@ public class ClothesDAO extends DBConnection {
 
             Statement st = this.connect().createStatement();
 
-            String query2 = "select * from clothes order by cloth_id asc";
+            String query2 = "select * from clothes order by id asc";
             ResultSet rs = st.executeQuery(query2);
 
             
             while (rs.next()) {
-                clothesList.add(new Clothes(rs.getLong("cloth_id"),rs.getString("cloth_names")));
+                clothesList.add(new Clothes(rs.getInt("id"),rs.getString("cloth_names")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -86,7 +106,7 @@ public class ClothesDAO extends DBConnection {
             ResultSet rs = st.executeQuery(query2);
 
             while (rs.next()) {
-                clothesMonoList.add(new Clothes(rs.getLong("cloth_id"),rs.getString("cloth_names")));
+                clothesMonoList.add(new Clothes(rs.getInt("id"),rs.getString("cloth_names")));
             }
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

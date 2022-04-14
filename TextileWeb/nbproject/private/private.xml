@@ -12,14 +12,12 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/entity/Clothes.java</file>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/controller/EmployeesBean.java</file>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/web/deleteCity.xhtml</file>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/nbproject/build-impl.xml</file>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/dao/BoutiquesDAO.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/entity/Boutiques.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/entity/City.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/converter/CityConverter.java</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/controller/FactoriesBean.java</file>
             <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/dao/ClothesDAO.java</file>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/controller/CityBean.java</file>
-            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/web/deleteStocks.xhtml</file>
+            <file>file:/C:/Users/yalci/OneDrive/Belgeler/GitHub/WebTextile/TextileWeb/src/java/converter/ClothesConverter.java</file>
         </group>
     </open-files>
 </project-private>

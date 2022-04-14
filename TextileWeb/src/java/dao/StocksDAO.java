@@ -18,7 +18,7 @@ public class StocksDAO extends DBConnection {
             String query = "insert into stocks (cloth_id,stock) values ('" + s.getCloth_id()+ "','"+ s.getStock()+ "')";
 
             System.out.println(query);
-            int r = st.executeUpdate(query);
+            st.executeUpdate(query);
 
             System.out.println("-------test");
 
@@ -32,7 +32,7 @@ public class StocksDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             String query2 = "delete from stocks where stock_id='" + s.getStock_id()+ "'";
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -44,7 +44,7 @@ public class StocksDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             System.out.println("update girdi");
             String query2 = "update stocks set stock='" + entity.getStock()+ "' , cloth_id='" + entity.getCloth_id()+ "' where stock_id= " + entity.getStock_id();
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
             System.out.println("update cikti");
 
         } catch (Exception ex) {

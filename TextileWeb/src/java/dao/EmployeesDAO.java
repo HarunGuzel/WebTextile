@@ -18,7 +18,7 @@ public class EmployeesDAO extends DBConnection {
             String query = "insert into employees (first_name,last_name,phone,workplace_id) values ('" + e.getFirst_name() + "','" + e.getLast_name() + "','" + e.getPhone() + "','" + e.getWorkplace_id() + "')";
 
             System.out.println(query);
-            int r = st.executeUpdate(query);
+            st.executeUpdate(query);
 
             System.out.println("-------test");
 
@@ -32,7 +32,7 @@ public class EmployeesDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             String query2 = "delete from employees where emp_id='" + e.getEmp_id() + "'";
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -44,7 +44,7 @@ public class EmployeesDAO extends DBConnection {
             Statement st = this.connect().createStatement();
             System.out.println("update girdi");
             String query2 = "update employees set first_name='" + entity.getFirst_name() + "' , last_name='" + entity.getLast_name() + "' , phone='" + entity.getPhone() + "' , workplace_id='" + entity.getWorkplace_id() + "' where emp_id= " + entity.getEmp_id();
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
             System.out.println("update cikti");
 
         } catch (Exception ex) {

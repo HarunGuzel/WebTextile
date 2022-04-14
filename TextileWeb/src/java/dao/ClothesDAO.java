@@ -42,7 +42,7 @@ public class ClothesDAO extends DBConnection {
             String query = "insert into clothes (cloth_names) values ('"+ cl.getCloth_names()+ "')";
 
             System.out.println(query);
-            int r = st.executeUpdate(query);
+            st.executeUpdate(query);
 
             System.out.println("-------test");
         } catch (Exception ex) {
@@ -66,7 +66,7 @@ public class ClothesDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             String query2 = "update clothes set cloth_names='"+entity.getCloth_names()+"' where id= "+entity.getId();
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
             
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

@@ -26,7 +26,7 @@ public class FactoriesDAO extends DBConnection{
             String query = "insert into factories (factory_name,city_id) values ('" + f.getFactory_name()+ "','" + f.getCity().getId()+ "')";
             
             System.out.println(query);
-            int r = st.executeUpdate(query);
+            st.executeUpdate(query);
             
             System.out.println("-------test");
 
@@ -40,7 +40,7 @@ public class FactoriesDAO extends DBConnection{
         try {
             Statement st = (Statement) this.connect().createStatement();
             String query2 = "delete from factories where factory_id='"+f.getFactory_id()+"'";
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -51,7 +51,7 @@ public class FactoriesDAO extends DBConnection{
             Statement st = this.connect().createStatement();
             System.out.println("update girdi");
             String query2 = "update factories set factory_name='" + entity.getFactory_name()+ "' , city_id='" + entity.getCity().getId()+ "' where factory_id= " + entity.getFactory_id();
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
             System.out.println("update cikti");
 
         } catch (Exception ex) {

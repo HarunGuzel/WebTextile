@@ -38,7 +38,7 @@ public class CityDAO extends DBConnection {
             String query = "insert into city (names) values ('" + c.getNames() + "')";
 
             System.out.println(query);
-            int r = st.executeUpdate(query);
+            st.executeUpdate(query);
 
             System.out.println("-------test");
 
@@ -52,7 +52,7 @@ public class CityDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             String query2 = "delete from city where id='" + c.getId() + "'";
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -63,7 +63,7 @@ public class CityDAO extends DBConnection {
         try {
             Statement st = this.connect().createStatement();
             String query2 = "update city set names='" + entity.getNames() + "' where id= " + entity.getId();
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

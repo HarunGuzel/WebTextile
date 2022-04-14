@@ -27,7 +27,7 @@ public class BoutiquesDAO extends DBConnection {
 
             System.out.println("-------create girdi");
             String query = "insert into boutiques (bout_name) values ('" + b.getBout_name() + "')";
-            int r = st.executeUpdate(query);
+            st.executeUpdate(query);
             ResultSet rs = st.executeQuery("select max(bout_id) as mid from boutiques");
             rs.next();
             
@@ -50,7 +50,7 @@ public class BoutiquesDAO extends DBConnection {
             System.out.println("update girdi");
             String query2 = "update boutiques set bout_name='" + entity.getBout_name() + "' where bout_id= " + entity.getBout_id() ;
             System.out.println("update cikti");
-            int r = st.executeUpdate(query2);
+            st.executeUpdate(query2);
             st.executeUpdate("delete from boutiques_clothes where boutiques_id="+entity.getBout_id());
             
             

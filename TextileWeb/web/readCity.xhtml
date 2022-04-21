@@ -29,25 +29,28 @@
                     </h:column>
 
                 </h:dataTable> 
-                
-                 <br/> <br/>
-                
-                
+
+                <br/> <br/>
+
+
             </h:form>
         </div>
-        
+
         <div class="container"> <!-- ekrana ortaladik-->
             <h:form>
                 <div>
                     <h:inputHidden value="#{cityBean.entity.id}" />
-                    
-                    <br/> <br/> <br/>
-                    Name  <h:inputText class="form-control" value="#{cityBean.entity.names}" />
 
+                    <br/> <br/> <br/>
+                    City Name  <h:inputText class="form-control" value="#{cityBean.entity.names}" />
+                    <span id="singularReadingHelpInline" class="form-text">
+                        Örnek : Ankara
+                    </span>
                 </div>
 
                 <br/>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+
                     <h:commandButton class="btn btn-warning" action="#{cityBean.getMonoList}" value="Singular Reading" />
                 </div>
                 <!-- styleClass ile table ozelligi verdik-->

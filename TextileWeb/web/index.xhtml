@@ -11,6 +11,18 @@
             body {
                 background-color: #d4fadb;
             }
+
+
+            .kapsam{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: auto;
+                width: auto;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
         </style>
     </h:head>
     <h:body>
@@ -19,39 +31,15 @@
 
                 <h1 align="center">Textile Web</h1> <br/><br/>
 
-                <h:commandButton action="readCity" value="Read City"/> 
-                <h:commandButton action="createCity" value="Create New City"/> 
-                <h:commandButton action="deleteCity" value="Delete City"/>
-                <h:commandButton action="updateCity" value="Update City"/>
+                <img src="C:\Users\yalci\OneDrive\Masaüstü\textile.jpg" class="rounded mx-auto d-block" width="400" height="400" />
+                &nbsp;&nbsp;
+                <div class="kapsam"> 
+                    <h:commandButton action="/index?faces-redirect=true" value="Ana Sayfa" styleClass="btn btn-primary"/> &nbsp;&nbsp; &nbsp;&nbsp;
+                    <h:commandButton action="/login?faces-redirect=true" value="Login" styleClass="btn btn-primary" />&nbsp;&nbsp; &nbsp;&nbsp;
+                    <h:commandButton action="/logPublic?faces-redirect=true" value="Public" styleClass="btn btn-primary" />&nbsp;&nbsp; &nbsp;&nbsp;
+                    <h:commandButton action="/logout?faces-redirect=true" value="Logout" styleClass="btn btn-primary" />
 
-                <br/> <br/>
-                <h:commandButton action="readEmployees" value="Read Employees"/>
-                <h:commandButton action="createEmployees" value="Create New Employees"/>
-                <h:commandButton action="deleteEmployees" value="Delete Employees"/>
-                <h:commandButton action="updateEmployees" value="Update Employees"/>
-                <br/> <br/>
-                <h:commandButton action="readStocks" value="Read Stocks"/>
-                <h:commandButton action="createStocks" value="Create New Stocks"/>
-                <h:commandButton action="deleteStocks" value="Delete Stocks"/>
-                <h:commandButton action="updateStocks" value="Update Stocks"/>
-                <br/> <br/>
-                <h:commandButton action="readFactories" value="Read Factories"/>
-                <h:commandButton action="createFactories" value="Create New Factories"/>
-                <h:commandButton action="deleteFactories" value="Delete Factories"/>
-                <h:commandButton action="updateFactories" value="Update Factories"/>
-                <br/> <br/>
-                <h:commandButton action="readBoutiques" value="Read Boutiques"/>
-                <h:commandButton action="createBoutiques" value="Create New Boutiques"/>
-                <h:commandButton action="deleteBoutiques" value="Delete Boutiques"/>
-                <h:commandButton action="updateBoutiques" value="Update Boutiques"/>
-                <br/> <br/>
-                <h:commandButton action="readClothes" value="Read Clothes"/>
-                <h:commandButton action="createClothes" value="Create New Clothes"/>
-                <h:commandButton action="deleteClothes" value="Delete Clothes"/>
-                <h:commandButton action="updateClothes" value="Update Clothes"/>
-                <hr/>
-
-                <hr/>
+                </div>
 
             </h:form>
         </div>

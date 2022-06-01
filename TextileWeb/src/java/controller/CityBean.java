@@ -23,8 +23,14 @@ public class CityBean implements Serializable {
     private CityDAO dao;
     private List<City> list;
     private List<City> monoList;
+    private List<City> list2;
+
+    private int page = 1;//bulunduğumuz sayfa
+    private int pageSize = 5;//kaç tane veri gösterecez    
+    private int pageCount;//sayfa sayısı
 
     public CityBean() {
+
     }
 
     public void create() {
@@ -75,13 +81,64 @@ public class CityBean implements Serializable {
     public void setList(List<City> list) {
         this.list = list;
     }
-    
+
     public List<City> getMonoList() {
         this.monoList = this.getDao().getCityMonoList(entity);
         return monoList;
     }
-    
-    public void setMonoList(){
+
+    public void setMonoList() {
         this.monoList = monoList;
     }
+
+    public List<City> getList2() {
+        this.list2 = this.getDao().getCityList2(page, pageSize);
+        return list2;
+    }
+
+    public void setList2(List<City> list2) {
+        this.list2 = list2;
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageCount() {
+        this.pageCount = (int) Math.ceil(this.getDao().count() / (double) pageSize);
+        return pageCount;
+    }
+
+    public void setPageCount(int pageCount) {
+        this.pageCount = pageCount;
+    }
+
+    public void next() {
+        if (this.page == this.getPageCount()) {
+            this.page = 1;
+        } else {
+            this.page++;
+        }
+    }
+
+    public void previous() {
+        if (this.page == 1) {
+            this.page = this.getPageCount();
+        } else {
+            this.page--;
+        }
+    }
+
 }

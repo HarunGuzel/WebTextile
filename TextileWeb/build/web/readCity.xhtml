@@ -37,7 +37,7 @@
         </div>
 
         <div class="container"> <!-- ekrana ortaladik-->
-            <h:form>
+            <h:form id="city-form">
                 <div>
                     <h:inputHidden value="#{cityBean.entity.id}" />
 
@@ -51,7 +51,9 @@
                 <br/>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 
-                    <h:commandButton class="btn btn-warning" action="#{cityBean.getMonoList}" value="Singular Reading" />
+                    <h:commandButton class="btn btn-warning" action="#{cityBean.getMonoList}" value="Singular Reading" >
+                        <f:ajax execute="city-form" render="city-form"/>
+                    </h:commandButton>
                 </div>
                 <!-- styleClass ile table ozelligi verdik-->
                 <h:dataTable styleClass="table table-striped" value="#{cityBean.monoList}" var="c" >
@@ -72,7 +74,7 @@
                 <hr />
 
                 <h:commandButton action="index" value="Back to Home Page"/>
-
+                
                 <hr />
             </h:form>
         </div>

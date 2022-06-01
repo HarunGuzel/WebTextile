@@ -16,7 +16,7 @@
 
     <h:body>
         <div class="container"> <!-- ekrana ortaladik-->
-            <h:form>
+            <h:form id="city-form">
                 <h1 align="center">City</h1>
                 <!-- styleClass ile table ozelligi verdik-->
                 <h:dataTable styleClass="table table-striped"  value="#{cityBean.list}" var="c" >
@@ -35,18 +35,21 @@
 
                     <h:column>
                         <f:facet name="header">DELETE</f:facet>
-                        <h:commandButton class="btn btn-danger" action="#{cityBean.delete(c)}" value="Delete" />
+                        <h:commandButton action="#{cityBean.delete(c)}" class="btn btn-danger"  value="Delete" >
+                            <f:ajax execute="@this" render="city-form"/>
+                        </h:commandButton>
                     </h:column>
 
 
                 </h:dataTable>
-                 <br/> <br/>
-                
+                <br/> <br/>
+
                 <h:commandButton action="index" value="Back to Home Page"/>
 
                 <hr />
             </h:form>
         </div>
+
     </h:body>
 </html>
 

@@ -16,7 +16,7 @@
     <h:body>
 
         <div class="container"> <!-- ekrana ortaladik-->
-            <h:form>
+            <h:form id="city-form">
                 <div>
                     <!-- tiklaninca id bilgisi alindi-->
                     <h:inputHidden value="#{cityBean.entity.id}" />
@@ -29,7 +29,9 @@
                 <!-- butonu kaydirdik-->
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <!-- duruma gore hangisi gelecek -->
-                    <h:commandButton class="btn btn-warning" action="#{cityBean.create}" value="Save" />
+                    <h:commandButton class="btn btn-warning" action="#{cityBean.create}" value="Save" >
+                        <f:ajax execute="city-form" render="city-form"/>
+                    </h:commandButton>
                 </div>
                 <!-- styleClass ile table ozelligi verdik-->
                 <h:dataTable styleClass="table table-striped"  value="#{cityBean.list}" var="c" >

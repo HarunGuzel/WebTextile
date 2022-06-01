@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CityDAO extends DBConnection {
-
+    
     public City findByID(int id) {
         City c = null;
         try {
@@ -69,7 +69,7 @@ public class CityDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
     }
-
+    //normal okuma
     public List<City> getCityList() {
 
         List<City> cityList = new ArrayList<>();
@@ -89,7 +89,29 @@ public class CityDAO extends DBConnection {
         }
         return cityList;
     }
+    //pagination
+    public List<City> getCityList2(int page,int pageSize) {
 
+        List<City> cityList = new ArrayList<>();
+        int start = (page-1) * pageSize;
+        try {
+            
+            Statement st = this.connect().createStatement();
+            System.out.println("start : "+start);
+            System.out.println("pageSize : "+pageSize);
+            
+            String query2 = "select * from city order by id asc limit " + pageSize + " offset " + start ;
+            ResultSet rs = st.executeQuery(query2);
+
+            while (rs.next()) {
+                cityList.add(new City(rs.getInt("id"), rs.getString("names")));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return cityList;
+    }
     public List<City> getCityMonoList(City entity) {
 
         List<City> cityMonoList = new ArrayList<>();
@@ -109,4 +131,27 @@ public class CityDAO extends DBConnection {
         }
         return cityMonoList;
     }
+    
+    public int count() {
+        int count = 0;
+
+        try {
+            
+            Statement st = this.connect().createStatement();
+
+            String query = "select count(id) as city_count from city  ";
+
+            ResultSet rs = st.executeQuery(query);
+            rs.next();
+            count = rs.getInt("city_count");
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return count;
+
+    }
+
+    
 }
